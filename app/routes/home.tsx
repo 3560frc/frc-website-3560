@@ -19,6 +19,7 @@ import {
 import { WolfButton } from "src/components/WolfButton";
 import { openDonorPackageModal } from "src/functions/donorPackage";
 import { AnimatePresence, motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import imA from "./teams/assets/team/aaryan.png";
 import imB from "./teams/assets/team/amber.png";
 import imC from "./teams/assets/team/armaan.png";
@@ -226,20 +227,21 @@ function MainText() {
 function Countdown() {
   const [currentTime, setCurrentTime] = useState(0);
 
-  const counter = "This is a counter"
-  const countdown_text = "DAYS UNTIL 2026-2027 season BIOCORE™ presented by Haas"
+  const counter = "This is a counter";
+  const countdownText =
+    "DAYS UNTIL 2026-2027 SEASON BIOCORE™ PRESENTED BY HAAS";
 
   useEffect(() => {
-    const target = 1799470800; // Jan, 1st, 2027
+    const target = 1799470800;
 
     const update = setInterval(() => {
       const time = target - Math.floor(Date.now() / 1000);
 
       setCurrentTime(time);
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(update)
-  }, [])
+    return () => clearInterval(update);
+  }, []);
 
   const months = Math.floor(currentTime / (60 * 60 * 24 * 30));
   const days = Math.floor((currentTime / (60 * 60 * 24)) % 30);
@@ -247,28 +249,27 @@ function Countdown() {
   const minutes = Math.floor((currentTime / 60) % 60);
   const seconds = Math.floor(currentTime % 60);
 
-  const leftPad = (str, count, pad) => {
-    let result = ""
+  const leftPad = (value: string | number, count: number, pad: string) =>
+    String(value).padStart(count, pad);
 
-    if (str.length < count) {
-      for (let i = (count - str.length) - 1; i >= 0; i--) {
-        result += pad
-      }
-    }
-
-    return result + str;
-  }
+  type CountdownStyle = CSSProperties & { "--value": number };
 
   return (
     <div className="flex justify-center">
       <div className="max-md:items-center rounded-md flex flex-col gap-4">
-        <h3 className="text-xl font-[Passion_One]">{countdown_text.toUpperCase()}</h3>
+        <h3 className="text-xl font-[Passion_One]">{countdownText}</h3>
         <div>
           <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
             {months > 0 && (
               <div className="flex flex-col bg-wolf-blue p-2 rounded-md">
               <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": months } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(months.toString(), 2, '0')}</span>
+                <span
+                  style={{ "--value": months } as CountdownStyle}
+                  aria-live="polite"
+                  aria-label={counter}
+                >
+                  {leftPad(months, 2, "0")}
+                </span>
               </span>
               months
             </div>
@@ -276,25 +277,49 @@ function Countdown() {
 
             <div className={`flex flex-col ${months > 0 ? "bg-white/20" : "bg-wolf-blue"}  p-2 rounded-md`}>
               <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": days } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(days.toString(), 2, '0')}</span>
+                <span
+                  style={{ "--value": days } as CountdownStyle}
+                  aria-live="polite"
+                  aria-label={counter}
+                >
+                  {leftPad(days, 2, "0")}
+                </span>
               </span>
               days
             </div>
             <div className="flex flex-col bg-white/20 p-2 rounded-md">
               <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": hours } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(hours.toString(), 2, '0')}</span>
+                <span
+                  style={{ "--value": hours } as CountdownStyle}
+                  aria-live="polite"
+                  aria-label={counter}
+                >
+                  {leftPad(hours, 2, "0")}
+                </span>
               </span>
               hours
             </div>
             <div className="flex flex-col bg-white/20 p-2 rounded-md">
               <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": minutes } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(minutes.toString(), 2, '0')}</span>
+                <span
+                  style={{ "--value": minutes } as CountdownStyle}
+                  aria-live="polite"
+                  aria-label={counter}
+                >
+                  {leftPad(minutes, 2, "0")}
+                </span>
               </span>
               min
             </div>
             <div className="flex flex-col bg-white/20 p-2 rounded-md">
               <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": seconds } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(seconds.toString(), 2, '0')}</span>
+                <span
+                  style={{ "--value": seconds } as CountdownStyle}
+                  aria-live="polite"
+                  aria-label={counter}
+                >
+                  {leftPad(seconds, 2, "0")}
+                </span>
               </span>
               sec
             </div>
@@ -324,6 +349,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (displays.length === 0) {
+      return;
+    }
+
     const int = setInterval(() => {
       setCurrentDisplay((prev) => (prev + 1) % displays.length);
     }, 5000);
@@ -345,7 +374,7 @@ export default function Home() {
       name: "MECHANICAL",
       src: Wrench,
       description:
-        "The Mechanical team designs, builds, and assembles the robot’s physical components, focusing on structure, movement, and durability to ensure peak performance.",
+        "The Mechanical team designs, builds, and assembles the robot's physical components, focusing on structure, movement, and durability to ensure peak performance.",
     },
     {
       name: "ELECTRICAL",
@@ -465,7 +494,10 @@ export default function Home() {
             className="opacity-20 hover:scale-[115%] transition-transform duration-150"
             onClick={() =>
               setCurrentDisplay(
-                (prev) => (prev - 1 + displays.length) % displays.length
+                (prev) =>
+                  displays.length > 0
+                    ? (prev - 1 + displays.length) % displays.length
+                    : 0
               )
             }
           />
@@ -474,7 +506,7 @@ export default function Home() {
               <div
                 className={
                   "rounded-full w-2 h-2 " +
-                  (i == currentDisplay ? "bg-wolf-blue" : "bg-blue-200")
+                  (i === currentDisplay ? "bg-wolf-blue" : "bg-blue-200")
                 }
                 key={display}
               ></div>
@@ -484,7 +516,9 @@ export default function Home() {
             size={24}
             className="opacity-20 hover:scale-[115%] transition-transform duration-150"
             onClick={() =>
-              setCurrentDisplay((prev) => (prev + 1) % displays.length)
+              setCurrentDisplay((prev) =>
+                displays.length > 0 ? (prev + 1) % displays.length : 0
+              )
             }
           />
         </div>
@@ -568,7 +602,11 @@ export default function Home() {
                   {subteam.name !== "GRAPHICS" && (
                     <WolfButton
                       title="Learn More"
-                      href={`/${subteam.name.toLowerCase()}`}
+                      href={
+                        subteam.name === "Field Building"
+                          ? "/field-building"
+                          : `/${subteam.name.toLowerCase()}`
+                      }
                       hollow={false}
                     />
                   )}

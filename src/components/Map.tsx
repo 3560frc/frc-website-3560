@@ -1,4 +1,4 @@
-import ResponsiveIframe from "./ResponsiveIframe.tsx"
+import ResponsiveIframe from "./ResponsiveIframe";
 
 export default function Map() {
   return (

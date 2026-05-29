@@ -8,7 +8,7 @@ export function WolfButton({
 }: {
   title: string;
   href?: string;
-  callback?: any;
+  callback?: () => void;
   hollow?: boolean;
 }) {
   hollow = hollow ? hollow : false;
@@ -19,6 +19,13 @@ export function WolfButton({
           : "px-4 py-3 bg-wolf-blue text-white hover:bg-blue-500"
       } font-[Passion_One] hover:-translate-y-1 transition-all duration-300 cursor-pointer text-xl uppercase`;
 
-  return callback ? <button onClick={callback} className={className}>{title}</button> : 
-    <Link to={{ pathname: href }} className={className}>{title}</Link>;
+  return callback ? (
+    <button onClick={callback} className={className}>
+      {title}
+    </button>
+  ) : (
+    <Link to={href ?? "/"} className={className}>
+      {title}
+    </Link>
+  );
 }

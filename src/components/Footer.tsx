@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import { Mails, Phone, Twitter, Youtube, Instagram } from "lucide-react";
 import windowSizeContext from "src/contexts/windowSizeContext";
 import Logo from "public/Logo.svg";
 import { openDonorPackageModal } from "src/functions/donorPackage";
-import { Link } from "react-router"
+import { Link } from "react-router";
 
 export default function Footer() {
   const { width } = windowSizeContext();
@@ -96,7 +97,7 @@ export default function Footer() {
               <FooterLink title="CAD" href="/cad" />
               <FooterLink title="Mechanical" href="/mechanical" />
               <FooterLink title="Electrical" href="/electrical" />
-              <FooterLink title="Field Build" href="/field building" />
+              <FooterLink title="Field Build" href="/field-building" />
               <FooterLink title="Programming" href="/programming" />
               <FooterLink title="Business" href="/business" />
               <FooterLink title="Executive" href="/executive" />
@@ -149,7 +150,7 @@ function FooterLink({
   href,
   callback,
 }: {
-  title: any;
+  title: ReactNode;
   href: string;
   callback?: () => void;
 }) {
@@ -161,9 +162,7 @@ function FooterLink({
           callback ?
             <button onClick={callback} className={className}>{title}</button>
             : (
-              <Link to={{
-                pathname: href,
-              }} className={className}>{title}</Link>
+              <Link to={href} className={className}>{title}</Link>
             )
         )
       }
