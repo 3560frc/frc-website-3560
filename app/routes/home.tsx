@@ -254,80 +254,58 @@ function Countdown() {
 
   type CountdownStyle = CSSProperties & { "--value": number };
 
-  return (
-    <div className="flex justify-center">
-      <div className="max-md:items-center rounded-md flex flex-col gap-4">
-        <h3 className="text-xl font-[Passion_One]">{countdownText}</h3>
-        <div>
-          <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-            {months > 0 && (
-              <div className="flex flex-col bg-wolf-blue p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span
-                  style={{ "--value": months } as CountdownStyle}
-                  aria-live="polite"
-                  aria-label={counter}
-                >
-                  {leftPad(months, 2, "0")}
-                </span>
-              </span>
-              months
-            </div>
-            )}
+  const CountdownTile = ({
+    value,
+    label,
+    highlighted = false,
+  }: {
+    value: number;
+    label: string;
+    highlighted?: boolean;
+  }) => (
+    <div
+      className={`bg-gray-500/50 opacity-75 rounded p-4 flex min-w-0 flex-col items-center justify-center px-2 py-2 text-center transition-transform duration-300 sm:px-3 sm:py-3 ${
+        highlighted ? "text-wolf-blue" : "text-white"
+      }`}
+    >
+      <span className="countdown font-mono leading-none text-5xl font-bold sm:text-6xl lg:text-7xl tabular-nums">
+        <span
+          style={{ "--value": value } as CountdownStyle}
+          aria-live="polite"
+          aria-label={`${label} remaining`}
+        >
+          {leftPad(value, 2, "0")}
+        </span>
+      </span>
+      <span className="mt-1 text-sm font-medium opacity-80 sm:text-base">
+        {label}
+      </span>
+    </div>
+  );
 
-            <div className={`flex flex-col ${months > 0 ? "bg-white/20" : "bg-wolf-blue"}  p-2 rounded-md`}>
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span
-                  style={{ "--value": days } as CountdownStyle}
-                  aria-live="polite"
-                  aria-label={counter}
-                >
-                  {leftPad(days, 2, "0")}
-                </span>
-              </span>
-              days
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span
-                  style={{ "--value": hours } as CountdownStyle}
-                  aria-live="polite"
-                  aria-label={counter}
-                >
-                  {leftPad(hours, 2, "0")}
-                </span>
-              </span>
-              hours
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span
-                  style={{ "--value": minutes } as CountdownStyle}
-                  aria-live="polite"
-                  aria-label={counter}
-                >
-                  {leftPad(minutes, 2, "0")}
-                </span>
-              </span>
-              min
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span
-                  style={{ "--value": seconds } as CountdownStyle}
-                  aria-live="polite"
-                  aria-label={counter}
-                >
-                  {leftPad(seconds, 2, "0")}
-                </span>
-              </span>
-              sec
-            </div>
+  return (
+    <div className="flex justify-center px-4 sm:px-0">
+      <div className="w-full max-w-5xl rounded-3xl border border-white/10 bg-black/20 px-4 py-5 shadow-lg backdrop-blur-sm sm:px-6 sm:py-6">
+        <div className="flex flex-col gap-3 sm:gap-4">
+          <h3 className="text-center text-xl font-[Passion_One] text-white/90">
+            {countdownText}
+          </h3>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
+            {months > 0 && (
+              <CountdownTile value={months} label="months" highlighted />
+            )}
+            <CountdownTile value={days} label="days" highlighted={months <= 0} />
+            <CountdownTile value={hours} label="hours" />
+            <CountdownTile value={minutes} label="min" />
+            <CountdownTile value={seconds} label="sec" />
           </div>
+          <p className="text-center text-xs text-white/60 sm:text-sm">
+            The countdown updates every second.
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Home() {
