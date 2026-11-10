@@ -5,7 +5,7 @@ import { useState, type JSX } from "react";
 import windowSizeContext from "src/contexts/windowSizeContext";
 import { Fragment } from "react";
 import { openDonorPackageModal } from "src/functions/donorPackage";
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router";
 import { motion } from "framer-motion";
 interface NavDropdownProps {
   name: string;
@@ -42,9 +42,7 @@ function NavDropdown(props: NavDropdownProps): JSX.Element {
         >
           {options.map((option) => (
             <Link
-              to={{
-                pathname: option.link
-              }}
+              to={option.link}
               key={option.name}
               className="hover:bg-white/10 rounded px-2 -my-2 py-0.5 w-full"
             >
@@ -84,7 +82,7 @@ const links: {
         { name: "CAD", link: "/cad" },
         { name: "Programming", link: "/programming" },
         { name: "Electrical", link: "/electrical" },
-        { name: "Field Build", link: "/field building" },
+        { name: "Field Build", link: "/field-building" },
         { name: "Business", link: "/business" },
         { name: "Executive", link: "/executive" },
       ],
@@ -102,12 +100,11 @@ const links: {
     },
   ];
 
-export default function Navbar(props) {
+export default function Navbar() {
   const { width } = windowSizeContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(-1);
-
-  const counter = "counter"
+  const location = useLocation();
 
   return (
     <div className="z-20 flex sticky gap-4 pt-10 lg:px-[145px] px-[45px] justify-end text-lg w-full">
@@ -137,11 +134,7 @@ export default function Navbar(props) {
                 ) : (
                   <Link
                     key={link.name}
-                    to={{
-                      pathname: link.link === window.location.pathname
-                        ? undefined
-                        : link.link
-                    }}
+                    to={link.link === location.pathname ? "/" : link.link}
                     className="font-[Passion_One] cursor-pointer"
                   >
                     {link.name.toUpperCase()}
@@ -183,9 +176,7 @@ export default function Navbar(props) {
                       </span>
                     ) : (
                       <Link
-                        to={{
-                          pathname: link.link,
-                        }}
+                        to={link.link}
                         className="transition-transform duration-100 hover:scale-[1.1] origin-left text-lg block font-[Inter]"
                         key={link.name}
                       >
