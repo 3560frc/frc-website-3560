@@ -1,8 +1,6 @@
-import aditya from "./assets/team/additya.png";
-import sudit from "./assets/team/sudit.png";
+import chelsea from "./assets/team/Chelsea.jpg";
+import jashan from "./assets/team/Jashan.jpg";
 
-import jenisha from "./assets/team/jenisha.png";
-import surina from "./assets/team/_DSC5923.png";
 
 import business from "./assets/repr/business.png";
 import { TeamPage } from "./TeamPage";
@@ -43,11 +41,9 @@ export function Business() {
       cultureList={["Organization", "Communication", "Teamwork"]}
       cultureDescriptionTwo="to ensure the team remains well-funded, recognized, and prepared for long-term success."
       members={[
-        { pName: "Sudit", src: sudit },
-        { pName: "Aditya", src: aditya },
-        
-        { pName: "Jenisha", src: jenisha },
-        { pName: "Serina", src: surina }
+        { pName: "Jashanpreet singh", src: jashan },
+        //{ pName: "Chelsea Sawh", src: chelsea },
+
       ]}
     />
   );

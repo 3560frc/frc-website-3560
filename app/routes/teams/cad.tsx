@@ -1,5 +1,4 @@
-import devesh from "./assets/team/devesh.png";
-import amer from "./assets/team/amer.png";
+import shai from "./assets/team/Shai.jpg";
 import cad from "./assets/repr/cad.png";
 import { TeamPage } from "./TeamPage";
 
@@ -37,8 +36,7 @@ export function CAD() {
       cultureList={["Precision", "Collaboration", "Innovation"]}
       cultureDescriptionTwo="are key to transforming ideas into a functioning machine and ensuring the robot meets competition regulations while maintaining strength and flexibility."
       members={[
-        { pName: "Devesh Madnani", src: devesh },
-        { pName: "Amer Sandhu", src: amer },
+        { pName: "Shai Patel", src: shai },
       ]}
     />
   );

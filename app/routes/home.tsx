@@ -19,6 +19,7 @@ import {
 import { WolfButton } from "src/components/WolfButton";
 import { openDonorPackageModal } from "src/functions/donorPackage";
 import { AnimatePresence, motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import imA from "./teams/assets/team/aaryan.png";
 import imB from "./teams/assets/team/amber.png";
 import imC from "./teams/assets/team/armaan.png";
@@ -226,20 +227,21 @@ function MainText() {
 function Countdown() {
   const [currentTime, setCurrentTime] = useState(0);
 
-  const counter = "This is a counter"
-  const countdown_text = "DAYS UNTIL 2026-2027 season BIOCORE™ presented by Haas"
+  const counter = "This is a counter";
+  const countdownText =
+    "DAYS UNTIL 2026-2027 SEASON BIOCORE™ PRESENTED BY HAAS";
 
   useEffect(() => {
-    const target = 1799470800; // Jan, 1st, 2027
+    const target = 1799470800;
 
     const update = setInterval(() => {
       const time = target - Math.floor(Date.now() / 1000);
 
       setCurrentTime(time);
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(update)
-  }, [])
+    return () => clearInterval(update);
+  }, []);
 
   const months = Math.floor(currentTime / (60 * 60 * 24 * 30));
   const days = Math.floor((currentTime / (60 * 60 * 24)) % 30);
@@ -247,62 +249,63 @@ function Countdown() {
   const minutes = Math.floor((currentTime / 60) % 60);
   const seconds = Math.floor(currentTime % 60);
 
-  const leftPad = (str, count, pad) => {
-    let result = ""
+  const leftPad = (value: string | number, count: number, pad: string) =>
+    String(value).padStart(count, pad);
 
-    if (str.length < count) {
-      for (let i = (count - str.length) - 1; i >= 0; i--) {
-        result += pad
-      }
-    }
+  type CountdownStyle = CSSProperties & { "--value": number };
 
-    return result + str;
-  }
+  const CountdownTile = ({
+    value,
+    label,
+    highlighted = false,
+  }: {
+    value: number;
+    label: string;
+    highlighted?: boolean;
+  }) => (
+    <div
+      className={`bg-gray-500/50 opacity-75 rounded p-4 flex min-w-0 flex-col items-center justify-center px-2 py-2 text-center transition-transform duration-300 sm:px-3 sm:py-3 ${
+        highlighted ? "text-wolf-blue" : "text-white"
+      }`}
+    >
+      <span className="countdown font-mono leading-none text-5xl font-bold sm:text-6xl lg:text-7xl tabular-nums">
+        <span
+          style={{ "--value": value } as CountdownStyle}
+          aria-live="polite"
+          aria-label={`${label} remaining`}
+        >
+          {leftPad(value, 2, "0")}
+        </span>
+      </span>
+      <span className="mt-1 text-sm font-medium opacity-80 sm:text-base">
+        {label}
+      </span>
+    </div>
+  );
 
   return (
-    <div className="flex justify-center">
-      <div className="max-md:items-center rounded-md flex flex-col gap-4">
-        <h3 className="text-xl font-[Passion_One]">{countdown_text.toUpperCase()}</h3>
-        <div>
-          <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+    <div className="flex justify-center px-4 sm:px-0">
+      <div className="w-full max-w-5xl rounded-3xl border border-white/10 bg-black/20 px-4 py-5 shadow-lg backdrop-blur-sm sm:px-6 sm:py-6">
+        <div className="flex flex-col gap-3 sm:gap-4">
+          <h3 className="text-center text-xl font-[Passion_One] text-white/90">
+            {countdownText}
+          </h3>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
             {months > 0 && (
-              <div className="flex flex-col bg-wolf-blue p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": months } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(months.toString(), 2, '0')}</span>
-              </span>
-              months
-            </div>
+              <CountdownTile value={months} label="months" highlighted />
             )}
-
-            <div className={`flex flex-col ${months > 0 ? "bg-white/20" : "bg-wolf-blue"}  p-2 rounded-md`}>
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": days } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(days.toString(), 2, '0')}</span>
-              </span>
-              days
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": hours } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(hours.toString(), 2, '0')}</span>
-              </span>
-              hours
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": minutes } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(minutes.toString(), 2, '0')}</span>
-              </span>
-              min
-            </div>
-            <div className="flex flex-col bg-white/20 p-2 rounded-md">
-              <span className="countdown font-mono max-sm:text-5xl text-7xl">
-                <span style={{ "--value": seconds } /* as React.CSSProperties */} aria-live="polite" aria-label={counter}>{leftPad(seconds.toString(), 2, '0')}</span>
-              </span>
-              sec
-            </div>
+            <CountdownTile value={days} label="days" highlighted={months <= 0} />
+            <CountdownTile value={hours} label="hours" />
+            <CountdownTile value={minutes} label="min" />
+            <CountdownTile value={seconds} label="sec" />
           </div>
+          <p className="text-center text-xs text-white/60 sm:text-sm">
+            The countdown updates every second.
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Home() {
@@ -324,6 +327,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (displays.length === 0) {
+      return;
+    }
+
     const int = setInterval(() => {
       setCurrentDisplay((prev) => (prev + 1) % displays.length);
     }, 5000);
@@ -345,7 +352,7 @@ export default function Home() {
       name: "MECHANICAL",
       src: Wrench,
       description:
-        "The Mechanical team designs, builds, and assembles the robot’s physical components, focusing on structure, movement, and durability to ensure peak performance.",
+        "The Mechanical team designs, builds, and assembles the robot's physical components, focusing on structure, movement, and durability to ensure peak performance.",
     },
     {
       name: "ELECTRICAL",
@@ -465,7 +472,10 @@ export default function Home() {
             className="opacity-20 hover:scale-[115%] transition-transform duration-150"
             onClick={() =>
               setCurrentDisplay(
-                (prev) => (prev - 1 + displays.length) % displays.length
+                (prev) =>
+                  displays.length > 0
+                    ? (prev - 1 + displays.length) % displays.length
+                    : 0
               )
             }
           />
@@ -474,7 +484,7 @@ export default function Home() {
               <div
                 className={
                   "rounded-full w-2 h-2 " +
-                  (i == currentDisplay ? "bg-wolf-blue" : "bg-blue-200")
+                  (i === currentDisplay ? "bg-wolf-blue" : "bg-blue-200")
                 }
                 key={display}
               ></div>
@@ -484,7 +494,9 @@ export default function Home() {
             size={24}
             className="opacity-20 hover:scale-[115%] transition-transform duration-150"
             onClick={() =>
-              setCurrentDisplay((prev) => (prev + 1) % displays.length)
+              setCurrentDisplay((prev) =>
+                displays.length > 0 ? (prev + 1) % displays.length : 0
+              )
             }
           />
         </div>
@@ -568,7 +580,11 @@ export default function Home() {
                   {subteam.name !== "GRAPHICS" && (
                     <WolfButton
                       title="Learn More"
-                      href={`/${subteam.name.toLowerCase()}`}
+                      href={
+                        subteam.name === "Field Building"
+                          ? "/field-building"
+                          : `/${subteam.name.toLowerCase()}`
+                      }
                       hollow={false}
                     />
                   )}

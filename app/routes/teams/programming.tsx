@@ -1,5 +1,5 @@
-import jahvon from "./assets/team/jahvon.jpg";
-import samyat from "./assets/team/samyat.png";
+import aayush from "./assets/team/Aayush.jpg";
+import yuvraj from "./assets/team/Yuvraj.jpg";
 import computer from "./assets/repr/programming.png";
 import { TeamPage } from "./TeamPage";
 
@@ -44,8 +44,8 @@ export function Programming() {
       cultureList={["Communication", "Leadership", "Initiative"]}
       cultureDescriptionTwo="are key for meeting programming deadlines and working effectively with the rest of the team."
       members={[
-        { pName: "Samyat Gautam", src: samyat },
-        { pName: "Jahvon Cockburn", src: jahvon },
+        { pName: "Aayush Kumar", src: aayush },
+        { pName: "Yuvraj Gupta", src: yuvraj },
       ]}
     />
   );

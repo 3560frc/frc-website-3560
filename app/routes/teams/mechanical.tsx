@@ -1,7 +1,6 @@
-import saket from "./assets/team/saket.png";
-import laksh from "./assets/team/laksh.png";
-import armaan from "./assets/team/armaan.png";
-import rishi from "./assets/team/rishi.jpg";
+import yannis from "./assets/team/Yannis.jpg";
+import rohin from "./assets/team/Rohin.jpg";
+
 import mechanical from "./assets/repr/mechanical.png";
 import { TeamPage } from "./TeamPage";
 
@@ -39,8 +38,8 @@ export function Mechanical() {
       cultureList={["Precision", "Durability", "Teamwork"]}
       cultureDescriptionTwo="are key to building a robot that performs consistently and withstands the rigors of competition, ensuring success under challenging conditions."
       members={[
-        { pName: "Saket Cherooli", src: saket },
-        { pName: "Laksh Kumar", src: laksh },
+        { pName: "Yannis Bhardwaj", src: yannis },
+        //{ pName: "Rohin Patel", src: rohin },
       ]}
     />
   );
