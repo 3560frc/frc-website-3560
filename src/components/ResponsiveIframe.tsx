@@ -1,7 +1,21 @@
 import { useRef, useState, useEffect } from "react";
-import windowSizeContext from "../contexts/windowSizeContext.tsx"
+import type { IframeHTMLAttributes } from "react";
+import windowSizeContext from "../contexts/windowSizeContext";
 
-export default function ResponsiveIframe(props: any) {
+type ResponsiveIframeProps = Omit<
+  IframeHTMLAttributes<HTMLIFrameElement>,
+  "src" | "width" | "height"
+> & {
+  src: string;
+  holdAspect?: boolean;
+};
+
+export default function ResponsiveIframe({
+  src,
+  holdAspect = false,
+  className,
+  ...iframeProps
+}: ResponsiveIframeProps) {
   const divRef = useRef<HTMLDivElement>(null);
   const { width, height } = windowSizeContext();
   const [divWidth, setDivWidth] = useState(480);
@@ -13,19 +27,20 @@ export default function ResponsiveIframe(props: any) {
     setDivHeight(divRef.current.clientHeight);
   };
 
-  useEffect(setSize, [width, height])
+  useEffect(setSize, [width, height]);
 
   return (
-    <div ref={divRef} {...props} className="w-full h-full">
+    <div ref={divRef} className={`w-full h-full ${className ?? ""}`.trim()}>
       <iframe
-        style={{
-          border: 0,
-        }}
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        {...iframeProps}
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
         width={divWidth}
-        height={props.holdAspect ? ((divWidth * 1080) / 1920) : divHeight }
-        src={props.src}
-      ></iframe>
+        height={holdAspect ? (divWidth * 1080) / 1920 : divHeight}
+        src={src}
+      />
     </div>
   );
 }

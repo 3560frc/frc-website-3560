@@ -1,8 +1,8 @@
 import Footer from "src/components/Footer";
 import Navbar from "src/components/Navbar";
 import Box from "src/components/Box";
-
 import windowSizeContext from "src/contexts/windowSizeContext";
+import type { TeamMember, ToolCard } from "./types";
 
 export function TeamPage({
   teamName,
@@ -19,11 +19,11 @@ export function TeamPage({
   teamDescription: string;
   teamList: string[];
   teamImage: string;
-  tools: { title: string; body: string; link: string; }[];
+  tools: ToolCard[];
   cultureDescriptionOne: string;
   cultureList: string[];
   cultureDescriptionTwo: string;
-  members: { pName: string; src: string }[];
+  members: TeamMember[];
 }) {
   const { width } = windowSizeContext();
 
@@ -60,7 +60,12 @@ export function TeamPage({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {tools.map((tool, index) => (
-              <Box key={index} link={tool.link} title={tool.title} body={tool.body} />
+              <Box
+                key={index}
+                link={tool.link}
+                title={tool.title}
+                body={tool.body}
+              />
             ))}
           </div>
         </div>
