@@ -1,5 +1,5 @@
-import navin from "./assets/team/navin.png";
-import krisha from "./assets/team/krisha.png";
+import akansha from "./assets/team/Akansha.jpg";
+import krisha from "./assets/team/Krisha.jpg";
 import field from "./assets/repr/fieldBuilding.png";
 import { TeamPage } from "./TeamPage";
 
@@ -33,8 +33,8 @@ export function FieldBuilding() {
       cultureList={["Precision", "Safety",]}
       cultureDescriptionTwo="are key to maintaining a safe and organized system that powers the robot effectively during competition, ensuring peak performance under high-pressure scenarios."
       members={[
-        { pName: "Navin Bedi", src: navin },
-        { pName: "Krisha", src: krisha  },
+        { pName: "Akansha Kansal", src: akansha },
+        { pName: "Krisha Parekh", src: krisha  },
       ]}
     />
   );

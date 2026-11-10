@@ -1,54 +1,54 @@
 import Footer from "src/components/Footer";
 import Navbar from "src/components/Navbar";
 import harris from "./assets/exec/mrs.harris.png";
-import kirsch from "./assets/exec/ms.kirsh.png";
+//import kirsch from "./assets/exec/ms.kirsh.png";
 
-import jahvon from "./assets/team/jahvon.jpg";
-import amer from "./assets/team/amer.png";
-import devesh from "./assets/team/devesh.png";
-import sudit from "./assets/team/sudit.png";
-import samyat from "./assets/team/samyat.png";
-import saket from "./assets/team/saket.png";
-import ravi from "./assets/team/ravi.png";
-import savyasaachi from "./assets/team/savyasaachi.png";
-import navin from "./assets/team/navin.png";
-import krisha from "./assets/team/krisha.png";
-import aditya from "./assets/team/additya.png";
-import jenisha from "./assets/team/jenisha.png";
-import serina from "./assets/team/_DSC5923.png";
-import laksh from "./assets/team/laksh.png";
+import aayush from "./assets/team/Aayush.jpg"; // Programming Co-Lead
+import yuvraj from "./assets/team/samyat.png"; // Programming Co-Lead
+
+
+import shai from "./assets/team/Shai.png"; // CAD Co-Lead
+
+import yannis from "./assets/team/Yannis.jpg"; // Mechanical Co-Lead
+import laksh from "./assets/team/laksh.png"; // Mechanical Co-Lead
+
+
+import ravi from "./assets/team/ravi.png"; // Captain
+
+import navin from "./assets/team/navin.png"; // Electrical Co-Lead
+
+import akansha from "./assets/team/Akansha.jpg"; // Field Build Co-Lead
+import krisha from "./assets/team/Krisha.jpg"; // Field Build Co-Lead
+
+import jashan from "./assets/team/Jashan.jpg"; // Business Co-Lead
+import chelsea from "./assets/team/Chelsea.jpg"; // Business Co-Lead
+
 
 import { TeamMember } from "./TeamPage";
 
 export function Executive() {
   let members = [
     {
-      pName: "Savyasaachi Shimoga-Yogesh", src: savyasaachi, title: "Team 3560 Captain",
+      pName: "Ravi Patel", src: ravi, title: "Team 3560 Captain",
     },
     { pName: "Mizanne Harris", src: harris, title: "Lead Coach" },
-    { pName: "Elizabeth Kirsch", src: kirsch, title: "Teacher Supervisor" },
+    //{ pName: "Elizabeth Kirsch", src: kirsch, title: "Teacher Supervisor" },
 
-    { pName: "Saket Cherooli", src: saket, title: "Mechanical Co-Lead & Safety Officer" }, 
-    { pName: "Laksh", src: laksh, title: "Mechanical Co-Lead" }, 
+    { pName: "Yannis Bhardwaj", src: yannis, title: "Mechanical Co-Lead" }, 
+   // { pName: "Rohin Patel", src: rohin, title: "Mechanical Co-Lead" }, 
 
-    { pName: "Ravi Patel", src: ravi, title: "Electrical Co-Lead" },
+    { pName: "Navin Bedi", src: navin, title: "Electrical Co-Lead" },
 
-    { pName: "Navin Bedi", src: navin, title: "Field Build Co-Lead" },
-    { pName: "Krisha ", src: krisha, title: "Field Build Co-Lead" },
+    { pName: "Akansha Kansal", src: akansha, title: "Field Build Co-Lead & FRC Youth Council Member" },
+    { pName: "Krisha Parekh", src: krisha, title: "Field Build Co-Lead" },
 
-    { pName: "Devesh Madnani", src: devesh, title: "CAD Co-Lead" },
-    { pName: "Amer Sandhu", src: amer, title: "CAD Co-Lead" },
+    { pName: "Shai Patel", src: shai, title: "CAD Co-Lead" },
 
-    { pName: "Jahvon Cockburn", src: jahvon, title: "Programming Co-Lead" },
-    { pName: "Samyat Gautam", src: samyat, title: "Programming Co-Lead" },
+    { pName: "Aayush Kumar", src: aayush, title: "Programming Co-Lead" },
+    //{ pName: "Yuvraj Gupta", src: yuvraj, title: "Programming Co-Lead" },
 
-    { pName: "Aditya", src: aditya, title: "Business Co-Lead" },
-
-    { pName: "Sudit", src: sudit, title: "Business Co-Lead" },
-
-    { pName: "Jenisha", src: jenisha, title: "Business Media" },
-
-    { pName: "Serina", src: serina, title: "Business Media" },
+    { pName: "Jashanpreet Singh", src: jashan, title: "Business Co-Lead" },
+    //{ pName: "Chelsea Sawh", src: chelsea, title: "Business Co-Lead" },
   ];
 
   return (

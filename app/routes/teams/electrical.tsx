@@ -1,4 +1,4 @@
-import ravi from "./assets/team/ravi.png";
+import navin from "./assets/team/navin.png";
 import electrical from "./assets/repr/electrical.png";
 import { TeamPage } from "./TeamPage";
 
@@ -36,7 +36,7 @@ export function Electrical() {
       cultureList={["Precision", "Safety", "Reliability"]}
       cultureDescriptionTwo="are key to maintaining a safe and organized system that powers the robot effectively during competition, ensuring peak performance under high-pressure scenarios."
       members={[
-        { pName: "Ravi Patel", src: ravi },
+        { pName: "Navin Bedi", src: navin },
       ]}
     />
   );
