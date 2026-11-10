@@ -1,5 +1,5 @@
 import aayush from "./assets/team/Aayush.jpg";
-import yuvraj from "./assets/team/Yuvraj.jpg";
+//import yuvraj from "./assets/team/Yuvraj.jpg";
 import computer from "./assets/repr/programming.png";
 import { TeamPage } from "./TeamPage";
 
@@ -45,7 +45,7 @@ export function Programming() {
       cultureDescriptionTwo="are key for meeting programming deadlines and working effectively with the rest of the team."
       members={[
         { pName: "Aayush Kumar", src: aayush },
-        { pName: "Yuvraj Gupta", src: yuvraj },
+        //{ pName: "Yuvraj Gupta", src: yuvraj },
       ]}
     />
   );

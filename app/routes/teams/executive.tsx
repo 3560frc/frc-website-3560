@@ -4,13 +4,13 @@ import harris from "./assets/exec/mrs.harris.png";
 //import kirsch from "./assets/exec/ms.kirsh.png";
 
 import aayush from "./assets/team/Aayush.jpg"; // Programming Co-Lead
-import yuvraj from "./assets/team/samyat.png"; // Programming Co-Lead
+//import yuvraj from "./assets/team/samyat.png"; // Programming Co-Lead
 
 
-import shai from "./assets/team/Shai.png"; // CAD Co-Lead
+import shai from "./assets/team/Shai.jpg"; // CAD Co-Lead
 
 import yannis from "./assets/team/Yannis.jpg"; // Mechanical Co-Lead
-import laksh from "./assets/team/laksh.png"; // Mechanical Co-Lead
+//import laksh from "./assets/team/laksh.png"; // Mechanical Co-Lead
 
 
 import ravi from "./assets/team/ravi.png"; // Captain
@@ -21,7 +21,7 @@ import navin from "./assets/team/navin.png"; // Electrical Co-Lead
 import krisha from "./assets/team/Krisha.jpg"; // Field Build Co-Lead
 
 import jashan from "./assets/team/Jashan.jpg"; // Business Co-Lead
-import chelsea from "./assets/team/Chelsea.jpg"; // Business Co-Lead
+//import chelsea from "./assets/team/Chelsea.jpg"; // Business Co-Lead
 
 
 import { TeamMember } from "./TeamPage";

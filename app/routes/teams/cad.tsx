@@ -36,7 +36,7 @@ export function CAD() {
       cultureList={["Precision", "Collaboration", "Innovation"]}
       cultureDescriptionTwo="are key to transforming ideas into a functioning machine and ensuring the robot meets competition regulations while maintaining strength and flexibility."
       members={[
-        { pName: "Shai Patel", src: shai },
+        { pName: "Shai Patel", src: shai }
       ]}
     />
   );
