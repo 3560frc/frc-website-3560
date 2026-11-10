@@ -17,7 +17,7 @@ import ravi from "./assets/team/ravi.png"; // Captain
 
 import navin from "./assets/team/navin.png"; // Electrical Co-Lead
 
-import akansha from "./assets/team/Akansha.jpg"; // Field Build Co-Lead
+//import akansha from "./assets/team/Akansha.jpg"; // Field Build Co-Lead
 import krisha from "./assets/team/Krisha.jpg"; // Field Build Co-Lead
 
 import jashan from "./assets/team/Jashan.jpg"; // Business Co-Lead
@@ -39,7 +39,7 @@ export function Executive() {
 
     { pName: "Navin Bedi", src: navin, title: "Electrical Co-Lead" },
 
-    { pName: "Akansha Kansal", src: akansha, title: "Field Build Co-Lead & FRC Youth Council Member" },
+    //{ pName: "Akanksha Kansal", src: akansha, title: "Field Build Co-Lead & FRC Youth Council Member" },
     { pName: "Krisha Parekh", src: krisha, title: "Field Build Co-Lead" },
 
     { pName: "Shai Patel", src: shai, title: "CAD Co-Lead" },

@@ -1,4 +1,4 @@
-import akansha from "./assets/team/Akansha.jpg";
+//import akanksha from "./assets/team/Akansha.jpg";
 import krisha from "./assets/team/Krisha.jpg";
 import field from "./assets/repr/fieldBuilding.png";
 import { TeamPage } from "./TeamPage";
@@ -33,7 +33,7 @@ export function FieldBuilding() {
       cultureList={["Precision", "Safety",]}
       cultureDescriptionTwo="are key to maintaining a safe and organized system that powers the robot effectively during competition, ensuring peak performance under high-pressure scenarios."
       members={[
-        { pName: "Akansha Kansal", src: akansha },
+        //{ pName: "Akanksha Kansal", src: akansha },
         { pName: "Krisha Parekh", src: krisha  },
       ]}
     />

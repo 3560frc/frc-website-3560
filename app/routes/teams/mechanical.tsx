@@ -1,5 +1,5 @@
 import yannis from "./assets/team/Yannis.jpg";
-import rohin from "./assets/team/Rohin.jpg";
+//import rohin from "./assets/team/Rohin.jpg";
 
 import mechanical from "./assets/repr/mechanical.png";
 import { TeamPage } from "./TeamPage";

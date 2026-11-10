@@ -1,4 +1,4 @@
-import chelsea from "./assets/team/Chelsea.jpg";
+//import chelsea from "./assets/team/Chelsea.jpg";
 import jashan from "./assets/team/Jashan.jpg";
 
 

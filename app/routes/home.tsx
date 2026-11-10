@@ -20,11 +20,7 @@ import { WolfButton } from "src/components/WolfButton";
 import { openDonorPackageModal } from "src/functions/donorPackage";
 import { AnimatePresence, motion } from "framer-motion";
 import type { CSSProperties } from "react";
-import imA from "./teams/assets/team/aaryan.png";
-import imB from "./teams/assets/team/amber.png";
-import imC from "./teams/assets/team/armaan.png";
-import imD from "./teams/assets/team/blake.png";
-import imE from "./teams/assets/team/devesh.png";
+
 import ResponsiveIframe from "../../src/components/ResponsiveIframe";
 
 export function meta({ }: Route.MetaArgs) {
