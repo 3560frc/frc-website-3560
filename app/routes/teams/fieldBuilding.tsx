@@ -34,7 +34,7 @@ export function FieldBuilding() {
       cultureDescriptionTwo="are key to maintaining a safe and organized system that powers the robot effectively during competition, ensuring peak performance under high-pressure scenarios."
       members={[
         //{ pName: "Akanksha Kansal", src: akansha },
-        { pName: "Krisha Parekh", src: krisha  },
+        { pName: "Krisha Parekh", src: krisha },
       ]}
     />
   );
