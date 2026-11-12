@@ -11,5 +11,5 @@ export default [
   route("business", "routes/business.tsx"),
   route("executive", "routes/executive.tsx"),
   route("donors", "routes/donors.tsx"),
-  route("field building", "routes/fieldBuilding.tsx"),
+  route("field-building", "routes/fieldBuilding.tsx"),
 ] satisfies RouteConfig;
